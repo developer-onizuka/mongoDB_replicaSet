@@ -17,6 +17,8 @@ Create the Ops Manager and mongoDB replicaSets. See https://github.com/developer
 
 # 1. Create deployment of "Employee Web app" with 4 repricas awaring mongoDB's ReplicaSet
 ```
+$ git clone https://github.com/developer-onizuka/mongoDB_replicaSet.git
+$ cd mongoDB_replicaSet
 $ sudo kubectl apply -f employee-replica-opsmanager.yaml 
 service/employee-srv unchanged
 deployment.apps/employee-test configured
