@@ -25,7 +25,7 @@ service/employee-srv unchanged
 deployment.apps/employee-test configured
 ```
 
-You should change the value among 192.168.33.30:27017, 192.168.33.31:27017 or 192.168.33.32:27017, depending on the Primary of MongoDB.
+You should edit the value among 192.168.33.30:27017, 192.168.33.31:27017 or 192.168.33.32:27017, depending on the Primary of mongoDB.
 ```
         env:
         - name: MONGO
