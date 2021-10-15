@@ -25,6 +25,15 @@ service/employee-srv unchanged
 deployment.apps/employee-test configured
 ```
 
+You should change the value among 192.168.33.30:27017, 192.168.33.31:27017 or 192.168.33.32:27017, depending on the Primary of MongoDB.
+```
+        env:
+        - name: MONGO
+          #value: mongo-srv
+          #value: mongo-test-0.mongo-srv,mongo-test-1.mongo-srv,mongo-test-2.mongo-srv
+          value: 192.168.33.30:27017
+```
+
 # 2. Create Nginx's config files and Configmap
 ```
 $ sudo kubectl create configmap nginx-config --from-file=default.conf
