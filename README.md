@@ -1,6 +1,6 @@
 # mongoDB_replicaSet
 
-Create the k8s cluster. See https://github.com/developer-onizuka/iptables_SNAT
+Create the k8s cluster in which pods can access to other virtual machines. See https://github.com/developer-onizuka/iptables_SNAT
 
 Create the Ops Manager and mongoDB replicaSets. See https://github.com/developer-onizuka/mongoDB_opsManager
 
