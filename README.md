@@ -1,9 +1,9 @@
 # mongoDB_replicaSet
 
 # 0. Requirements
-- Create the k8s cluster in which pods can access to other virtual machines. See https://github.com/developer-onizuka/iptables_SNAT
-
-- Create the Ops Manager and mongoDB replicaSets. See https://github.com/developer-onizuka/mongoDB_opsManager
+- Create the k8s cluster in which pods can access to other virtual machines. See my Vagrantfile at https://github.com/developer-onizuka/iptables_SNAT#7-vagrantfile-of-k8s
+- Create mongoDB's replicaSets. See my Vagrantfile at https://github.com/developer-onizuka/iptables_SNAT#8-vagrantfile-of-mongodb
+- Create the Ops Manager. See my Vagrantfile at https://github.com/developer-onizuka/mongoDB_opsManager/blob/main/Vagrantfile
 
 | Virtual Machine | IPaddress | Function |
 | --- | --- | --- |
