@@ -67,8 +67,8 @@ nginx-srv      NodePort    10.100.42.100    <none>        8080:30001/TCP      44
 # 5. Access to each nodeport
 In this case the nodeport is 192.168.33.100:30001, 192.168.33.101:30001 or 192.168.33.102:30001.
 
-- https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Screenshot%20from%202021-10-15%2022-14-37.png
-- https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Screenshot%20from%202021-10-15%2021-31-17.png
+![mongoreplicaset1](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Screenshot%20from%202021-10-15%2022-14-37.png)
+![mongoreplicaset2](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Screenshot%20from%202021-10-15%2021-31-17.png)
 
 # 6. mongoDB compass
 The mongoDB compass is a nice tool. Download and use it to see DB inside.
