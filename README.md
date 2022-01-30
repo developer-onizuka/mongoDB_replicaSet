@@ -13,6 +13,8 @@
 | mongo-2 | 192.168.33.33 | mongoDB replicaSet |
 | ops-manager | 192.168.33.12 | mongoDB ops Manager |
 
+- Download and install istio and make label on the default namespace with istio-injection=enabled.
+> https://github.com/developer-onizuka/istio
 
 - Create mongoDB's replicaSets. 
 > https://github.com/developer-onizuka/iptables_SNAT#8-vagrantfile-of-mongodb 
@@ -150,7 +152,7 @@ HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occur
 
 
 
-
+You also find the access routes seeing kiali which is an addon process of istio.
 
 ![mongoDB-replicaSet2.png](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/mongoDB-replicaSet2.png)
 
