@@ -1,9 +1,12 @@
 # mongoDB_replicaSet
 
 # 0. Requirements
-- Create the k8s cluster in which pods can access to other virtual machines. See my Vagrantfile at https://github.com/developer-onizuka/iptables_SNAT#7-vagrantfile-of-k8s or https://github.com/developer-onizuka/kubernetes_sriov#2-vagrantfile
-- Create mongoDB's replicaSets. See my Vagrantfile at https://github.com/developer-onizuka/iptables_SNAT#8-vagrantfile-of-mongodb or https://github.com/developer-onizuka/iptables_SNAT/blob/main/README.md#9-vagrantfile-of-mongodb-with-sriov
-- Create the Ops Manager. See my Vagrantfile at https://github.com/developer-onizuka/mongoDB_opsManager/blob/main/Vagrantfile
+- Create mongoDB's replicaSets. 
+> https://github.com/developer-onizuka/iptables_SNAT#8-vagrantfile-of-mongodb 
+
+- Create the Ops Manager. 
+> https://github.com/developer-onizuka/mongoDB_opsManager/blob/main/Vagrantfile
+
 - Create /etc/hosts entries in woker-nodes which access mongoDB's replicaSet, because replicaSet was made by using hostname inside.
 ```
 192.168.33.30 mongo-0
