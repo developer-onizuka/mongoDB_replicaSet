@@ -4,14 +4,14 @@
 
 | Virtual Machine | IPaddress | Function | Vagrantfile |
 | --- | --- | --- | --- |
-| Master | 192.168.33.100 | k8s's master | [I'm an inline-style link](https://www.google.com) |
+| Master | 192.168.33.100 | k8s's master | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile1) |
 | Worker1 | 192.168.33.101 | k8s's worker1 | |
-| Worker8 | 192.168.33.108 | k8s's worker8 | |
+| Worker8 | 192.168.33.108 | k8s's worker8 | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile2) |
 | Worker9 | 192.168.33.109 | k8s's worker9 | |
-| mongo-0 | 192.168.33.31 | mongoDB replicaSet | |
+| mongo-0 | 192.168.33.31 | mongoDB replicaSet | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile3) |
 | mongo-1 | 192.168.33.32 | mongoDB replicaSet | |
 | mongo-2 | 192.168.33.33 | mongoDB replicaSet | |
-| ops-manager | 192.168.33.12 | mongoDB ops Manager | |
+| ops-manager | 192.168.33.12 | mongoDB ops Manager | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile4) |
 
 - Download and install istio and make label on the default namespace with istio-injection=enabled.
 > https://github.com/developer-onizuka/istio
