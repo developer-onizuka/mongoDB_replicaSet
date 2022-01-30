@@ -23,7 +23,7 @@
 - Create the Ops Manager. 
   > https://github.com/developer-onizuka/mongoDB_opsManager
 
-- Istio's WorkloadEntry creates a kind of resolvor between endpoint and IP address for the pod in the Service mesh. You don't not need creating entries in /etc/hosts as like below if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml attached.
+- Istio's WorkloadEntry creates a kind of resolvor between endpoint and IP address for the pod in the Service mesh. You don't need creating entries in /etc/hosts as like below if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml attached.
 ```
 192.168.33.30 mongo-0
 192.168.33.31 mongo-1
@@ -139,7 +139,7 @@ If you find such as below, you succeed deploying mongoDB's replicaSet.
 ![mongoDB-replicaSet1.png](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/mongoDB-replicaSet1.png)
 
 
-But if you find the following message while accessing to the replicaSet, it means the Appication could not resolve the hostname of mongo-0, mongo-1 and mongo-2 so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
+But if you find the following message while accessing to the replicaSet, it means the Appication could not resolve the hostname of mongo-0, mongo-1 and mongo-2. Check if the workloadEntry is created properly.
 ---
 ```
 $ curl https://localhost:5001 -k
