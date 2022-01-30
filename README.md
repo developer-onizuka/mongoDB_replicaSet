@@ -86,7 +86,6 @@ employee-test-59d8ff8d6d-gjch9   2/2     Running   0          7m39s   10.10.45.2
 employee-test-59d8ff8d6d-pxxbp   2/2     Running   0          7m39s   10.10.235.158   worker1   <none>           <none>
 nginx-test-57c5b8b58d-9fc87      2/2     Running   0          2m30s   10.10.235.159   worker1   <none>           <none>
 nginx-test-57c5b8b58d-stt4t      2/2     Running   0          2m30s   10.10.45.252    worker8   <none>           <none>
-ubuntu                           2/2     Running   0          47h     10.10.215.23    worker9   <none>           <none>
 ```
 
 # 8. Check services and workloadEntries
