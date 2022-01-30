@@ -13,14 +13,14 @@
 | mongo-2 | 192.168.33.33 | mongoDB replicaSet | |
 | ops-manager | 192.168.33.12 | mongoDB ops Manager | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile4) |
 
+- Create kubernetes cluster attached LoadBalancer such as MetalLB. You might use the Vagrantfiles above and the link below for MetalLB system:
+> https://github.com/developer-onizuka/metalLB
+
 - Download and install istio and make label on the default namespace with istio-injection=enabled.
 > https://github.com/developer-onizuka/istio
 
 - Create Three Virtual Machines for mongoDB's replicaSets which will be created later. 
-> https://github.com/developer-onizuka/iptables_SNAT#8-vagrantfile-of-mongodb 
-
 - Create the Ops Manager. 
-> https://github.com/developer-onizuka/mongoDB_opsManager/blob/main/Vagrantfile
 
 - Create /etc/hosts entries in woker-nodes which access mongoDB's replicaSet, because replicaSet was made by using hostname inside.
 ```
