@@ -4,6 +4,12 @@
 - Create the k8s cluster in which pods can access to other virtual machines. See my Vagrantfile at https://github.com/developer-onizuka/iptables_SNAT#7-vagrantfile-of-k8s or https://github.com/developer-onizuka/kubernetes_sriov#2-vagrantfile
 - Create mongoDB's replicaSets. See my Vagrantfile at https://github.com/developer-onizuka/iptables_SNAT#8-vagrantfile-of-mongodb or https://github.com/developer-onizuka/iptables_SNAT/blob/main/README.md#9-vagrantfile-of-mongodb-with-sriov
 - Create the Ops Manager. See my Vagrantfile at https://github.com/developer-onizuka/mongoDB_opsManager/blob/main/Vagrantfile
+- Create /etc/hosts entries in woker-nodes which access mongoDB's replicaSet, because replicaSet was made by using hostname inside.
+```
+192.168.33.30 mongo-0
+192.168.33.31 mongo-1
+192.168.33.32 mongo-2
+```
 
 | Virtual Machine | IPaddress | Function |
 | --- | --- | --- |
@@ -37,7 +43,11 @@ But if you find the following message while accessing to the replica-set, it mea
 ---
 ```
 curl https://localhost:5001 -k
-System.TimeoutException: A timeout occurred after 30000ms selecting a server using CompositeServerSelector{ Selectors = MongoDB.Driver.MongoClient+AreSessionsSupportedServerSelector, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 }, OperationsCountServerSelector }. Client view of cluster state is { ClusterId : "1", ConnectionMode : "ReplicaSet", Type : "ReplicaSet", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/mongo-0:27017" }", EndPoint: "Unspecified/mongo-0:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
+System.TimeoutException: A timeout occurred after 30000ms selecting a server using CompositeServerSelector{ Selectors = MongoDB.Driver.MongoClient+AreSessionsSupportedServerSelector, 
+LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 }, OperationsCountServerSelector }. Client view of cluster state is { ClusterId : "1", 
+ConnectionMode : "ReplicaSet", Type : "ReplicaSet", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/mongo-0:27017" }", 
+EndPoint: "Unspecified/mongo-0:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", 
+HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
 ```
 
 # 2. Create Nginx's config files and Configmap
