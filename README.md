@@ -30,7 +30,7 @@
 192.168.33.32 mongo-2
 ```
 
-# 1. Create replicaSet among mongo-0, mongo-1 and mongo-2
+# 1. Create ReplicaSet among mongo-0, mongo-1 and mongo-2 with mongoDB opsManager
   > https://github.com/developer-onizuka/mongoDB_opsManager#4-mongodb-mms-agent-startup-daemon
 
 # 2. Create Services and workloadEntries bound for mongoDB's replicaSet outside of kubernetes cluster
