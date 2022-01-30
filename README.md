@@ -97,13 +97,15 @@ mongo-0        ClusterIP   10.111.158.28    <none>        27017/TCP           6m
 mongo-1        ClusterIP   10.105.199.217   <none>        27017/TCP           6m16s   app=mongo-1-vm
 mongo-2        ClusterIP   10.97.52.44      <none>        27017/TCP           6m16s   app=mongo-2-vm
 nginx-svc      ClusterIP   10.103.171.102   <none>        8080/TCP            2m48s   app=nginx-test
-
+```
+```
 $ kubectl get workloadentry
 NAME              AGE     ADDRESS
 mongo-0-vm-wkle   8m11s   192.168.33.30
 mongo-1-vm-wkle   8m11s   192.168.33.31
 mongo-2-vm-wkle   8m11s   192.168.33.32
-
+```
+```
 $ kubectl get endpoints
 NAME           ENDPOINTS                                                             AGE
 employee-svc   10.10.235.158:5001,10.10.45.251:5001,10.10.235.158:5000 + 1 more...   9m57s
@@ -113,6 +115,26 @@ mongo-1        <none>                                                           
 mongo-2        <none>                                                                8m16s
 nginx-svc      10.10.235.159:80,10.10.45.252:80                                      4m48s
 ```
+
+# 9. Let's Access to it 
+
+Find the IP address of Istio-ingressgateway. In this case, it is 192.168.33.220.
+```
+kubectl get services -n istio-system 
+NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)                                                           AGE
+grafana                 ClusterIP      10.103.59.87     <none>           3000/TCP                                                          15d
+istio-eastwestgateway   LoadBalancer   10.109.178.196   192.168.33.221   15021:30600/TCP,15443:31534/TCP,15012:31242/TCP,15017:30426/TCP   16d
+istio-ingressgateway    LoadBalancer   10.110.212.70    192.168.33.220   15021:31932/TCP,80:30217/TCP,443:31930/TCP                        16d
+istiod                  ClusterIP      10.111.13.175    <none>           15010/TCP,15012/TCP,443/TCP,15014/TCP                             16d
+jaeger-collector        ClusterIP      10.101.9.249     <none>           14268/TCP,14250/TCP,9411/TCP                                      15d
+kiali                   LoadBalancer   10.107.184.95    192.168.33.222   20001:32532/TCP,9090:32092/TCP                                    15d
+prometheus              ClusterIP      10.109.69.225    <none>           9090/TCP                                                          15d
+tracing                 ClusterIP      10.111.142.142   <none>           80/TCP,16685/TCP                                                  15d
+zipkin                  ClusterIP      10.101.75.155    <none>           9411/TCP  
+```
+
+
+
 
 But if you find the following message while accessing to the replicaSet, it means the Appication could not resolve the hostname of mongo-0, mongo-1 and mongo-2 so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
 ---
