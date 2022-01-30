@@ -7,12 +7,12 @@ If you watch the video how to use ReplicaSet in ServiceMesh and kubernetes clust
 | Virtual Machine | IPaddress | Function | Vagrantfile |
 | --- | --- | --- | --- |
 | Master | 192.168.33.100 | k8s's master | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile1) |
-| Worker1 | 192.168.33.101 | k8s's worker1 |^^ |
+| Worker1 | 192.168.33.101 | k8s's worker1 | ^^ |
 | Worker8 | 192.168.33.108 | k8s's worker8 | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile2) |
-| Worker9 | 192.168.33.109 | k8s's worker9 |^^ |
+| Worker9 | 192.168.33.109 | k8s's worker9 | ^^ |
 | mongo-0 | 192.168.33.31 | mongoDB replicaSet | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile3) |
-| mongo-1 | 192.168.33.32 | mongoDB replicaSet |^^ |
-| mongo-2 | 192.168.33.33 | mongoDB replicaSet |^^ |
+| mongo-1 | 192.168.33.32 | mongoDB replicaSet | ^^ |
+| mongo-2 | 192.168.33.33 | mongoDB replicaSet | ^^ |
 | ops-manager | 192.168.33.12 | mongoDB ops Manager | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile4) |
 
 - Create kubernetes cluster attached LoadBalancer such as MetalLB. You might use the Vagrantfiles above and the link below for MetalLB system:
