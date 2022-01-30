@@ -53,7 +53,7 @@ service/employee-svc created
 deployment.apps/employee-test created
 ```
 
-The environment of MONGO is a connection string but it is a replicaSet aware connection string, especially.
+The environment of MONGO is for setting a connection string, but in this case it is a replicaSet aware connection string, especially.
 ```
         env:
         - name: MONGO
