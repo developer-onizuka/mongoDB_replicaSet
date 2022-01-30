@@ -25,13 +25,19 @@ service/employee-srv unchanged
 deployment.apps/employee-test configured
 ```
 
-You should edit the value of "employee-replica-opsmanager.yaml" among 192.168.33.30:27017, 192.168.33.31:27017 or 192.168.33.32:27017, depending on the Primary of mongoDB. 
+You should edit the value of "employee-replica-opsmanager.yaml" as like below:
 ```
         env:
         - name: MONGO
           #value: mongo-srv
-          #value: mongo-test-0.mongo-srv,mongo-test-1.mongo-srv,mongo-test-2.mongo-srv
-          value: 192.168.33.30:27017
+          value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet
+```
+
+But if you find the following message while accessing to the replica-set, it means you must create /etc/hosts in the clinet machine which you will use the browser so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
+---
+```
+curl https://localhost:5001 -k
+System.TimeoutException: A timeout occurred after 30000ms selecting a server using CompositeServerSelector{ Selectors = MongoDB.Driver.MongoClient+AreSessionsSupportedServerSelector, LatencyLimitingServerSelector{ AllowedLatencyRange = 00:00:00.0150000 }, OperationsCountServerSelector }. Client view of cluster state is { ClusterId : "1", ConnectionMode : "ReplicaSet", Type : "ReplicaSet", State : "Disconnected", Servers : [{ ServerId: "{ ClusterId : 1, EndPoint : "Unspecified/mongo-0:27017" }", EndPoint: "Unspecified/mongo-0:27017", ReasonChanged: "Heartbeat", State: "Disconnected", ServerVersion: , TopologyVersion: , Type: "Unknown", HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
 ```
 
 # 2. Create Nginx's config files and Configmap
