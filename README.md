@@ -14,21 +14,21 @@
 | ops-manager | 192.168.33.12 | mongoDB ops Manager | [Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Vagrantfile4) |
 
 - Create kubernetes cluster attached LoadBalancer such as MetalLB. You might use the Vagrantfiles above and the link below for MetalLB system:
-> https://github.com/developer-onizuka/metalLB
+  > https://github.com/developer-onizuka/metalLB
 
 - Download and install istio and make label on the default namespace with istio-injection=enabled.
-> https://github.com/developer-onizuka/istio
+  > https://github.com/developer-onizuka/istio
 
 - Create Three Virtual Machines for mongoDB's replicaSets which will be created later. 
 - Create the Ops Manager. 
+  > https://github.com/developer-onizuka/mongoDB_opsManager
 
-- Create /etc/hosts entries in woker-nodes which access mongoDB's replicaSet, because replicaSet was made by using hostname inside.
+- Kubernetes's WorkloadEntry creates the name resolving. You don't not need creating /etc/hosts entry as like below if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml attached.
 ```
 192.168.33.30 mongo-0
 192.168.33.31 mongo-1
 192.168.33.32 mongo-2
 ```
-- What I recentry understood is Kubernetes's WorkloadEntry creates the name resolving. You might not need creating /etc/hosts entry if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml.
 
 # 1. Create replicaSet among mongo-0, mongo-1 and mongo-2
 > https://github.com/developer-onizuka/mongoDB_opsManager
