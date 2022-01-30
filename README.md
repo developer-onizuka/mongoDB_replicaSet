@@ -92,13 +92,13 @@ nginx-test-57c5b8b58d-s9fj4      2/2     Running   0          5s     10.10.215.3
 # 8. Check services and workloadEntries
 ```
 $ kubectl get services -o wide
-NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE     SELECTOR
-employee-svc   ClusterIP   10.99.68.147     <none>        5001/TCP,5000/TCP   7m57s   app=employee-test
-kubernetes     ClusterIP   10.96.0.1        <none>        443/TCP             16d     <none>
-mongo-0        ClusterIP   10.111.158.28    <none>        27017/TCP           6m16s   app=mongo-0-vm
-mongo-1        ClusterIP   10.105.199.217   <none>        27017/TCP           6m16s   app=mongo-1-vm
-mongo-2        ClusterIP   10.97.52.44      <none>        27017/TCP           6m16s   app=mongo-2-vm
-nginx-svc      ClusterIP   10.103.171.102   <none>        8080/TCP            2m48s   app=nginx-test
+NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE    SELECTOR
+employee-svc   ClusterIP   10.99.68.147     <none>        5001/TCP,5000/TCP   172m   app=employee-test
+kubernetes     ClusterIP   10.96.0.1        <none>        443/TCP             16d    <none>
+mongo-0        ClusterIP   10.111.158.28    <none>        27017/TCP           170m   app=mongo-0-vm
+mongo-1        ClusterIP   10.105.199.217   <none>        27017/TCP           170m   app=mongo-1-vm
+mongo-2        ClusterIP   10.97.52.44      <none>        27017/TCP           170m   app=mongo-2-vm
+nginx-svc      ClusterIP   10.100.134.248   <none>        8080/TCP            61s    app=nginx-test
 ```
 ```
 $ kubectl get workloadentry
@@ -110,12 +110,12 @@ mongo-2-vm-wkle   8m11s   192.168.33.32
 ```
 $ kubectl get endpoints
 NAME           ENDPOINTS                                                             AGE
-employee-svc   10.10.235.158:5001,10.10.45.251:5001,10.10.235.158:5000 + 1 more...   9m57s
+employee-svc   10.10.235.158:5001,10.10.45.251:5001,10.10.235.158:5000 + 1 more...   172m
 kubernetes     192.168.33.100:6443                                                   16d
-mongo-0        <none>                                                                8m16s
-mongo-1        <none>                                                                8m16s
-mongo-2        <none>                                                                8m16s
-nginx-svc      10.10.235.159:80,10.10.45.252:80                                      4m48s
+mongo-0        <none>                                                                170m
+mongo-1        <none>                                                                170m
+mongo-2        <none>                                                                170m
+nginx-svc      10.10.215.32:80,10.10.235.132:80                                      81s
 ```
 
 # 9. Let's Access to it 
