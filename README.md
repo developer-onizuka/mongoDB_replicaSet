@@ -1,6 +1,18 @@
 # mongoDB_replicaSet
 
-# 0. Requirements
+# 0. Requirements you must create before trying mongoDB's replicaSet
+
+| Virtual Machine | IPaddress | Function |
+| --- | --- | --- |
+| Master | 192.168.33.100 | k8s's master |
+| Worker1 | 192.168.33.101 | k8s's worker1 |
+| Worker2 | 192.168.33.102 | k8s's worker2 |
+| mongo-0 | 192.168.33.31 | mongoDB replicaSet |
+| mongo-1 | 192.168.33.32 | mongoDB replicaSet |
+| mongo-2 | 192.168.33.33 | mongoDB replicaSet |
+| ops-manager | 192.168.33.12 | mongoDB ops Manager |
+
+
 - Create mongoDB's replicaSets. 
 > https://github.com/developer-onizuka/iptables_SNAT#8-vagrantfile-of-mongodb 
 
@@ -14,17 +26,6 @@
 192.168.33.32 mongo-2
 ```
 - What I recentry understood is Kubernetes's WorkloadEntry creates the name resolving. You might not need creating /etc/hosts entry if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml.
-
-| Virtual Machine | IPaddress | Function |
-| --- | --- | --- |
-| Master | 192.168.33.100 | k8s's master |
-| Worker1 | 192.168.33.101 | k8s's worker1 |
-| Worker2 | 192.168.33.102 | k8s's worker2 |
-| mongo-0 | 192.168.33.31 | mongoDB replicaSet |
-| mongo-1 | 192.168.33.32 | mongoDB replicaSet |
-| mongo-2 | 192.168.33.33 | mongoDB replicaSet |
-| ops-manager | 192.168.33.12 | mongoDB ops Manager |
-
 
 # 1. Create deployment of "Employee Web app" with 4 repricas awaring mongoDB's ReplicaSet
 ```
