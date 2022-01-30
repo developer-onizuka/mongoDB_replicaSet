@@ -23,7 +23,7 @@
 - Create the Ops Manager. 
   > https://github.com/developer-onizuka/mongoDB_opsManager
 
-- Istio's WorkloadEntry creates a kind of name resolvor for the pod in the Service mesh. You don't not need creating /etc/hosts entry as like below if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml attached.
+- Istio's WorkloadEntry creates a kind of resolvor between endpoint and IP address for the pod in the Service mesh. You don't not need creating /etc/hosts entry as like below if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml attached.
 ```
 192.168.33.30 mongo-0
 192.168.33.31 mongo-1
