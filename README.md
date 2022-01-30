@@ -62,15 +62,16 @@ The environment of MONGO is for setting a connection string, but in this case it
           #value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet
 ```
 
-# 4. Create Nginx's config files and Configmap
-```
-$ kubectl create configmap nginx-config --from-file=default.conf
-configmap/nginx-config created
-```
-# 5. Create Ingress Gateway for accessing from outside of the Cluster
+# 4. Create Ingress Gateway for accessing from outside of the Cluster
 ```
 $ kubectl apply -f ingress-gateway.yaml 
 gateway.networking.istio.io/employee-gateway created
+```
+
+# 5. Create Nginx's config files and Configmap
+```
+$ kubectl create configmap nginx-config --from-file=default.conf
+configmap/nginx-config created
 ```
 
 # 6. Create depolyment of Nginx with 2 repricas
