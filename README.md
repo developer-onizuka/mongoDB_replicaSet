@@ -31,7 +31,7 @@
 ```
 
 # 1. Create replicaSet among mongo-0, mongo-1 and mongo-2
-> https://github.com/developer-onizuka/mongoDB_opsManager
+  > https://github.com/developer-onizuka/mongoDB_opsManager#4-mongodb-mms-agent-startup-daemon
 
 # 2. Create Service and workloadEntry bound for mongoDB's replicaSet outside of kubernetes cluster
 ```
