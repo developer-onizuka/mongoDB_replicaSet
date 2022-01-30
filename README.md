@@ -33,7 +33,7 @@ You should edit the value of "employee-replica-opsmanager.yaml" as like below:
           value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet
 ```
 
-But if you find the following message while accessing to the replica-set, it means you must create /etc/hosts in the clinet machine which you will use the browser so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
+But if you find the following message while accessing to the replica-set, it means you must create each entry in /etc/hosts at the client machine which you will use the browser so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
 ---
 ```
 curl https://localhost:5001 -k
