@@ -16,7 +16,7 @@
 - Download and install istio and make label on the default namespace with istio-injection=enabled.
 > https://github.com/developer-onizuka/istio
 
-- Create mongoDB's replicaSets. 
+- Create Three Virtual Machines for mongoDB's replicaSets which will be created later. 
 > https://github.com/developer-onizuka/iptables_SNAT#8-vagrantfile-of-mongodb 
 
 - Create the Ops Manager. 
