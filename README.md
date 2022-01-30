@@ -2,16 +2,16 @@
 
 # 0. Requirements and what you must create before trying mongoDB's replicaSet
 
-| Virtual Machine | IPaddress | Function |
-| --- | --- | --- |
-| Master | 192.168.33.100 | k8s's master |
-| Worker1 | 192.168.33.101 | k8s's worker1 |
-| Worker8 | 192.168.33.108 | k8s's worker8 |
-| Worker9 | 192.168.33.109 | k8s's worker9 |
-| mongo-0 | 192.168.33.31 | mongoDB replicaSet |
-| mongo-1 | 192.168.33.32 | mongoDB replicaSet |
-| mongo-2 | 192.168.33.33 | mongoDB replicaSet |
-| ops-manager | 192.168.33.12 | mongoDB ops Manager |
+| Virtual Machine | IPaddress | Function | Vagrantfile |
+| --- | --- | --- | --- |
+| Master | 192.168.33.100 | k8s's master | [I'm an inline-style link](https://www.google.com) |
+| Worker1 | 192.168.33.101 | k8s's worker1 | |
+| Worker8 | 192.168.33.108 | k8s's worker8 | |
+| Worker9 | 192.168.33.109 | k8s's worker9 | |
+| mongo-0 | 192.168.33.31 | mongoDB replicaSet | |
+| mongo-1 | 192.168.33.32 | mongoDB replicaSet | |
+| mongo-2 | 192.168.33.33 | mongoDB replicaSet | |
+| ops-manager | 192.168.33.12 | mongoDB ops Manager | |
 
 - Download and install istio and make label on the default namespace with istio-injection=enabled.
 > https://github.com/developer-onizuka/istio
