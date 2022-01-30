@@ -60,9 +60,10 @@ It means the C# program developer doesn't directry need to know each IP address 
 ```
         env:
         - name: MONGO
-          #value: 'mongo-0'
+          # value: 'mongo-0'
           value: 'mongo-0:27017,mongo-1:27017,mongo-2:27017/?replicaSet=myReplicaSet'
-          #value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet
+          # You don't need to use the parameter as like below:
+          # value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet
 ```
 
 # 4. Create Ingress Gateway for accessing from outside of the Cluster
