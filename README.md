@@ -1,5 +1,7 @@
 # mongoDB_replicaSet
 
+https://www.youtube.com/watch?v=7howpsD9Ogc
+
 # 0. Prerequisites and what you must create before trying mongoDB's replicaSet
 
 | Virtual Machine | IPaddress | Function | Vagrantfile |
