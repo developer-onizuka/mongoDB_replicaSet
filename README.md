@@ -6,7 +6,8 @@
 | --- | --- | --- |
 | Master | 192.168.33.100 | k8s's master |
 | Worker1 | 192.168.33.101 | k8s's worker1 |
-| Worker2 | 192.168.33.102 | k8s's worker2 |
+| Worker8 | 192.168.33.108 | k8s's worker8 |
+| Worker9 | 192.168.33.109 | k8s's worker9 |
 | mongo-0 | 192.168.33.31 | mongoDB replicaSet |
 | mongo-1 | 192.168.33.32 | mongoDB replicaSet |
 | mongo-2 | 192.168.33.33 | mongoDB replicaSet |
