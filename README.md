@@ -27,7 +27,7 @@
 ```
 - What I recentry understood is Kubernetes's WorkloadEntry creates the name resolving. You might not need creating /etc/hosts entry if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml.
 
-# 1. Create deployment of "Employee Web app" with 4 repricas awaring mongoDB's ReplicaSet
+# 1. Create deployment of "Employee Web app" with 2 repricas awaring mongoDB's ReplicaSet
 ```
 $ git clone https://github.com/developer-onizuka/mongoDB_replicaSet.git
 $ cd mongoDB_replicaSet
@@ -36,12 +36,13 @@ service/employee-srv unchanged
 deployment.apps/employee-test configured
 ```
 
-You should edit the value of "employee-replica-opsmanager.yaml" as like below:
+The environment of MONGO is a connection string but it is a replicaSet aware connection string, especially.
 ```
         env:
         - name: MONGO
-          #value: mongo-srv
-          value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet
+          #value: 'mongo-0'
+          value: 'mongo-0:27017,mongo-1:27017,mongo-2:27017/?replicaSet=myReplicaSet'
+          #value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet
 ```
 
 But if you find the following message while accessing to the replicaSet, it means you must create each entry in /etc/hosts at the App node so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
