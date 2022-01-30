@@ -28,13 +28,27 @@
 ```
 - What I recentry understood is Kubernetes's WorkloadEntry creates the name resolving. You might not need creating /etc/hosts entry if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml.
 
-# 1. Create deployment of "Employee Web app" with 2 repricas awaring mongoDB's ReplicaSet
+# 1. Create replicaSet among mongo-0, mongo-1 and mongo-2
+> https://github.com/developer-onizuka/mongoDB_opsManager
+
+# 2. Create Service and workloadEntry bound for mongoDB's replicaSet outside of kubernetes cluster
 ```
 $ git clone https://github.com/developer-onizuka/mongoDB_replicaSet.git
 $ cd mongoDB_replicaSet
-$ sudo kubectl apply -f employee-replica-opsmanager.yaml 
-service/employee-srv unchanged
-deployment.apps/employee-test configured
+$ kubectl apply -f mongo-vm-svc.yaml,mongo-vm-wkle.yaml 
+service/mongo-0 created
+service/mongo-1 created
+service/mongo-2 created
+workloadentry.networking.istio.io/mongo-0-vm-wkle created
+workloadentry.networking.istio.io/mongo-1-vm-wkle created
+workloadentry.networking.istio.io/mongo-2-vm-wkle created
+```
+
+# 3. Create deployment of "Employee Web app" with 2 repricas awaring mongoDB's ReplicaSet
+```
+$ kubectl apply -f employee-replica-opsmanager.yaml 
+service/employee-svc created
+deployment.apps/employee-test created
 ```
 
 The environment of MONGO is a connection string but it is a replicaSet aware connection string, especially.
@@ -46,7 +60,61 @@ The environment of MONGO is a connection string but it is a replicaSet aware con
           #value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet
 ```
 
-But if you find the following message while accessing to the replicaSet, it means you must create each entry in /etc/hosts at the App node so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
+# 4. Create Nginx's config files and Configmap
+```
+$ kubectl create configmap nginx-config --from-file=default.conf
+configmap/nginx-config created
+```
+# 5. Create Ingress Gateway for accessing from outside of the Cluster
+```
+$ kubectl apply -f ingress-gateway.yaml 
+gateway.networking.istio.io/employee-gateway created
+```
+
+# 6. Create depolyment of Nginx with 2 repricas
+```
+$ kubectl apply -f nginx.yaml
+```
+
+# 7. Check if all of pods are available
+```
+$ kubectl get pods -o wide
+NAME                             READY   STATUS    RESTARTS   AGE     IP              NODE      NOMINATED NODE   READINESS GATES
+employee-test-59d8ff8d6d-gjch9   2/2     Running   0          7m39s   10.10.45.251    worker8   <none>           <none>
+employee-test-59d8ff8d6d-pxxbp   2/2     Running   0          7m39s   10.10.235.158   worker1   <none>           <none>
+nginx-test-57c5b8b58d-9fc87      2/2     Running   0          2m30s   10.10.235.159   worker1   <none>           <none>
+nginx-test-57c5b8b58d-stt4t      2/2     Running   0          2m30s   10.10.45.252    worker8   <none>           <none>
+ubuntu                           2/2     Running   0          47h     10.10.215.23    worker9   <none>           <none>
+```
+
+# 8. Check services and workloadEntries
+```
+$ kubectl get services -o wide
+NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE     SELECTOR
+employee-svc   ClusterIP   10.99.68.147     <none>        5001/TCP,5000/TCP   7m57s   app=employee-test
+kubernetes     ClusterIP   10.96.0.1        <none>        443/TCP             16d     <none>
+mongo-0        ClusterIP   10.111.158.28    <none>        27017/TCP           6m16s   app=mongo-0-vm
+mongo-1        ClusterIP   10.105.199.217   <none>        27017/TCP           6m16s   app=mongo-1-vm
+mongo-2        ClusterIP   10.97.52.44      <none>        27017/TCP           6m16s   app=mongo-2-vm
+nginx-svc      ClusterIP   10.103.171.102   <none>        8080/TCP            2m48s   app=nginx-test
+
+$ kubectl get workloadentry
+NAME              AGE     ADDRESS
+mongo-0-vm-wkle   8m11s   192.168.33.30
+mongo-1-vm-wkle   8m11s   192.168.33.31
+mongo-2-vm-wkle   8m11s   192.168.33.32
+
+$ kubectl get endpoints
+NAME           ENDPOINTS                                                             AGE
+employee-svc   10.10.235.158:5001,10.10.45.251:5001,10.10.235.158:5000 + 1 more...   9m57s
+kubernetes     192.168.33.100:6443                                                   16d
+mongo-0        <none>                                                                8m16s
+mongo-1        <none>                                                                8m16s
+mongo-2        <none>                                                                8m16s
+nginx-svc      10.10.235.159:80,10.10.45.252:80                                      4m48s
+```
+
+But if you find the following message while accessing to the replicaSet, it means the Appication could not resolve the hostname of mongo-0, mongo-1 and mongo-2 so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
 ---
 ```
 $ curl https://localhost:5001 -k
@@ -57,42 +125,13 @@ EndPoint: "Unspecified/mongo-0:27017", ReasonChanged: "Heartbeat", State: "Disco
 HeartbeatException: "MongoDB.Driver.MongoConnectionException: An exception occurred while opening a connection to the server.
 ```
 
-# 2. Create Nginx's config files and Configmap
-```
-$ sudo kubectl create configmap nginx-config --from-file=default.conf
-configmap/nginx-config created
-```
 
-# 3. Create depolyment of Nginx with 2 repricas
-```
-$ sudo kubectl apply -f nginx-nodeport.yaml
-```
 
-# 4. Check if pods are available
-```
-$ sudo kubectl get pods -o wide
-NAME                             READY   STATUS    RESTARTS   AGE     IP                NODE      NOMINATED NODE   READINESS GATES
-curl                             1/1     Running   0          24m     192.168.189.65    worker2   <none>           <none>
-employee-test-58c7c99ff4-269fk   1/1     Running   0          92s     192.168.235.133   worker1   <none>           <none>
-employee-test-58c7c99ff4-k4klg   1/1     Running   0          94s     192.168.189.69    worker2   <none>           <none>
-employee-test-58c7c99ff4-ml9kg   1/1     Running   0          94s     192.168.235.132   worker1   <none>           <none>
-employee-test-58c7c99ff4-qdq2z   1/1     Running   0          92s     192.168.235.134   worker1   <none>           <none>
-nginx-test-67d9db6c48-2gwnb      1/1     Running   0          7m58s   192.168.189.67    worker2   <none>           <none>
-nginx-test-67d9db6c48-tw2ln      1/1     Running   0          7m58s   192.168.189.68    worker2   <none>           <none>
 
-$ sudo kubectl get services -o wide
-NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE   SELECTOR
-employee-srv   ClusterIP   10.109.161.133   <none>        5001/TCP,5000/TCP   51m   run=employee-test
-kubernetes     ClusterIP   10.96.0.1        <none>        443/TCP             88m   <none>
-nginx-srv      NodePort    10.100.42.100    <none>        8080:30001/TCP      44m   run=nginx-test
-```
 
-# 5. Access to each nodeport
-In this case the nodeport is 192.168.33.100:30001, 192.168.33.101:30001 or 192.168.33.102:30001.
 
-![mongoreplicaset1](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Screenshot%20from%202021-10-15%2022-14-37.png)
-![mongoreplicaset2](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/Screenshot%20from%202021-10-15%2021-31-17.png)
 
-# 6. mongoDB compass
+
+# X. mongoDB compass
 The mongoDB compass is a nice tool. Download and use it to see DB inside.
 - https://www.mongodb.com/ja-jp/products/compass
