@@ -55,7 +55,7 @@ service/employee-svc created
 deployment.apps/employee-test created
 ```
 
-The environment of MONGO is for setting a connection string, but in this case it is a replicaSet aware connection string, especially.
+The environment of MONGO is for setting a connection string, but in this case it is a replicaSet aware connection string, especially. It means the C# program developer doesn't directry need to know each IP address of MongoDB's ReplicaSet. Please note the IP addresses are already resolved by WorkloadEntry.
 ```
         env:
         - name: MONGO
