@@ -1,6 +1,6 @@
 # mongoDB_replicaSet
 
-https://www.youtube.com/watch?v=7howpsD9Ogc
+[You can watach the video how to use ReplicaSet](https://www.youtube.com/watch?v=7howpsD9Ogc)
 
 # 0. Prerequisites and what you must create before trying mongoDB's replicaSet
 
