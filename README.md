@@ -10,6 +10,7 @@
 192.168.33.31 mongo-1
 192.168.33.32 mongo-2
 ```
+- What I recentry understood is Kubernetes's WorkloadEntry creates the name resolving. You might not need creating /etc/hosts entry if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml.
 
 | Virtual Machine | IPaddress | Function |
 | --- | --- | --- |
