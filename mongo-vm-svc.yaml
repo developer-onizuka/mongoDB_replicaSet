@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-0
+  labels:
+    app: mongo-0-vm
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+    name: tcp
+  selector:
+    app: mongo-0-vm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-1
+  labels:
+    app: mongo-1-vm
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+    name: tcp
+  selector:
+    app: mongo-1-vm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-2
+  labels:
+    app: mongo-2-vm
+spec:
+  ports:
+  - port: 27017
+    targetPort: 27017
+    name: tcp
+  selector:
+    app: mongo-2-vm

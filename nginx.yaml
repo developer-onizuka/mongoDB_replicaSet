@@ -1,0 +1,63 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-vsvc
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - employee-gateway
+  http:
+  - match:
+    - uri:
+        prefix: "/"
+    route:
+    - destination:
+        port:
+          number: 8080
+        host: nginx-svc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+  labels:
+    app: nginx-svc
+spec:
+  #type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 80
+    protocol: TCP
+    name: http
+    #nodePort: 30001
+  selector:
+    app: nginx-test
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-test
+spec:
+  selector:
+    matchLabels:
+      app: nginx-test
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+    spec:
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+      containers:
+      - name: nginx
+        image: docker.io/nginx:1.14.2
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d
+          name: nginx-config
+          readOnly: true
+        ports:
+        - containerPort: 80

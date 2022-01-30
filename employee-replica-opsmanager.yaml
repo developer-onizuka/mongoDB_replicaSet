@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: employee-srv
+  name: employee-svc
   labels:
-    run: employee-srv
+    app: employee-svc
 spec:
 #  type: NodePort
   ports:
@@ -16,7 +16,7 @@ spec:
     protocol: TCP
     name: http
   selector:
-    run: employee-test
+    app: employee-test
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -25,12 +25,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      run: employee-test
-  replicas: 4
+      app: employee-test
+  replicas: 2
   template:
     metadata:
       labels:
-        run: employee-test
+        app: employee-test
     spec:
       containers:
       - name: employee
@@ -40,6 +40,6 @@ spec:
         - containerPort: 5000
         env:
         - name: MONGO
-          #value: mongo-srv
-          #value: mongo-test-0.mongo-srv,mongo-test-1.mongo-srv,mongo-test-2.mongo-srv
-          value: 192.168.33.31:27017
+          #value: 'mongo-0'
+          value: 'mongo-0:27017,mongo-1:27017,mongo-2:27017/?replicaSet=myReplicaSet'
+          #value: 192.168.33.30:27017,192.168.33.31:27017,192.168.33.32:27017/?replicaSet=myReplicaSet

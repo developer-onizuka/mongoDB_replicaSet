@@ -1,0 +1,29 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: WorkloadEntry
+metadata:
+  name: mongo-0-vm-wkle
+spec:
+  address: 192.168.33.30
+  labels:
+    app: mongo-0-vm
+    instanceid: mongo-0
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: WorkloadEntry
+metadata:
+  name: mongo-1-vm-wkle
+spec:
+  address: 192.168.33.31
+  labels:
+    app: mongo-1-vm
+    instanceid: mongo-1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: WorkloadEntry
+metadata:
+  name: mongo-2-vm-wkle
+spec:
+  address: 192.168.33.32
+  labels:
+    app: mongo-2-vm
+    instanceid: mongo-2
