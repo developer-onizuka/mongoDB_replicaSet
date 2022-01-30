@@ -1,6 +1,6 @@
 # mongoDB_replicaSet
 
-If you the video how to use ReplicaSet in ServiceMesh and kubernetes cluster, [Click here](https://www.youtube.com/watch?v=7howpsD9Ogc).
+If you watch the video how to use ReplicaSet in ServiceMesh and kubernetes cluster, [Click here](https://www.youtube.com/watch?v=7howpsD9Ogc).
 
 # 0. Prerequisites and what you must create before trying mongoDB's replicaSet
 
