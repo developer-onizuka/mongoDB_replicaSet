@@ -82,11 +82,11 @@ $ kubectl apply -f nginx.yaml
 # 7. Check if all of pods are available
 ```
 $ kubectl get pods -o wide
-NAME                             READY   STATUS    RESTARTS   AGE     IP              NODE      NOMINATED NODE   READINESS GATES
-employee-test-59d8ff8d6d-gjch9   2/2     Running   0          7m39s   10.10.45.251    worker8   <none>           <none>
-employee-test-59d8ff8d6d-pxxbp   2/2     Running   0          7m39s   10.10.235.158   worker1   <none>           <none>
-nginx-test-57c5b8b58d-9fc87      2/2     Running   0          2m30s   10.10.235.159   worker1   <none>           <none>
-nginx-test-57c5b8b58d-stt4t      2/2     Running   0          2m30s   10.10.45.252    worker8   <none>           <none>
+NAME                             READY   STATUS    RESTARTS   AGE    IP              NODE      NOMINATED NODE   READINESS GATES
+employee-test-59d8ff8d6d-gjch9   2/2     Running   0          171m   10.10.45.251    worker8   <none>           <none>
+employee-test-59d8ff8d6d-pxxbp   2/2     Running   0          171m   10.10.235.158   worker1   <none>           <none>
+nginx-test-57c5b8b58d-8mc9q      2/2     Running   0          5s     10.10.235.132   worker1   <none>           <none>
+nginx-test-57c5b8b58d-s9fj4      2/2     Running   0          5s     10.10.215.32    worker9   <none>           <none>
 ```
 
 # 8. Check services and workloadEntries
