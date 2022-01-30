@@ -133,8 +133,8 @@ tracing                 ClusterIP      10.111.142.142   <none>           80/TCP,
 zipkin                  ClusterIP      10.101.75.155    <none>           9411/TCP  
 ```
 
-[!mongoDB-replicaSet1](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/mongoDB-replicaSet1.png)
-[!mongoDB-replicaSet2](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/mongoDB-replicaSet2.png)
+![mongoDB-replicaSet1.png](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/mongoDB-replicaSet1.png)
+![mongoDB-replicaSet2.png](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/mongoDB-replicaSet2.png)
 
 
 But if you find the following message while accessing to the replicaSet, it means the Appication could not resolve the hostname of mongo-0, mongo-1 and mongo-2 so that it can resolve the name of mongo-0, mongo-1 and mongo-2. It is very important.
