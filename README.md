@@ -10,10 +10,10 @@ If you watch the video how to use ReplicaSet in ServiceMesh and kubernetes clust
 | Worker1 | 192.168.33.101 | k8s's worker | ^ |
 | Worker8 | 192.168.33.108 | ^ | [k8s_worker/Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/k8s_worker/Vagrantfile) |
 | Worker9 | 192.168.33.109 | ^ | ^ |
+| ops-manager | 192.168.33.12 | mongoDB ops Manager | [opsManager/Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/opsManager/Vagrantfile) |
 | mongo-0 | 192.168.33.31 | mongoDB replicaSet | [replicaSet/Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/replicaSet/Vagrantfile) |
 | mongo-1 | 192.168.33.32 | ^ | ^ |
 | mongo-2 | 192.168.33.33 | ^ | ^ |
-| ops-manager | 192.168.33.12 | mongoDB ops Manager | [opsManager/Vagrantfile](https://github.com/developer-onizuka/mongoDB_replicaSet/blob/main/opsManager/Vagrantfile) |
 
 - Create kubernetes cluster attached LoadBalancer such as MetalLB. You might use the Vagrantfiles above and the link below for MetalLB system:
   > https://github.com/developer-onizuka/metalLB
