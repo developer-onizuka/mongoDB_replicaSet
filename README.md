@@ -18,6 +18,9 @@ If you watch the video how to use ReplicaSet in ServiceMesh and kubernetes clust
 - Create kubernetes cluster attached LoadBalancer such as MetalLB. You might use the Vagrantfiles above and the link below for MetalLB system:
   > https://github.com/developer-onizuka/metalLB
 
+- If you want to use multi-nodes cluster with open-vSwitch, then you might use the guide below:
+  > https://github.com/developer-onizuka/openvswitch_install
+
 - Download and install istio and make label on the default namespace with istio-injection=enabled.
   > https://github.com/developer-onizuka/istio
 
