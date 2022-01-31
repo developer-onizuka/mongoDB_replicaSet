@@ -33,7 +33,7 @@ If you watch the video how to use ReplicaSet in ServiceMesh and kubernetes clust
 ```
 
 # 1. Create ReplicaSet among mongo-0, mongo-1 and mongo-2 with mongoDB opsManager
-  > https://github.com/developer-onizuka/mongoDB_opsManager#4-mongodb-mms-agent-startup-daemon
+  > https://github.com/developer-onizuka/mongoDB_opsManager#3-start-mongodb-monitoring-service-mms
 
 # 2. Create Services and workloadEntries bound for mongoDB's replicaSet outside of kubernetes cluster
 ```
