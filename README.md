@@ -27,7 +27,7 @@ If you watch the video how to use ReplicaSet in ServiceMesh and kubernetes clust
 - Create the Ops Manager. 
   > https://github.com/developer-onizuka/mongoDB_opsManager
 
-- Create Three Virtual Machines for mongoDB's replicaSet which will be created later. 
+- Create Three Virtual Machines for mongoDB's replicaSet which will be used later. 
 
 - Istio's WorkloadEntry creates a kind of resolvor between endpoint and IP address for the pod in the Service mesh. You don't need creating entries in /etc/hosts as like below if you create WorkloadEntry resource thru mongo-vm-svc.yaml and mongo-vm-wkle.yaml attached.
 ```
