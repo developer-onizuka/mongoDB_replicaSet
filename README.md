@@ -130,7 +130,7 @@ nginx-svc      10.10.215.32:80,10.10.235.132:80                                 
 
 Find the IP address of Istio-ingressgateway. In this case, it is 192.168.33.220.
 ```
-kubectl get services -n istio-system 
+$ kubectl get services -n istio-system 
 NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)                                                           AGE
 grafana                 ClusterIP      10.103.59.87     <none>           3000/TCP                                                          15d
 istio-eastwestgateway   LoadBalancer   10.109.178.196   192.168.33.221   15021:30600/TCP,15443:31534/TCP,15012:31242/TCP,15017:30426/TCP   16d
