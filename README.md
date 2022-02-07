@@ -24,7 +24,7 @@ If you watch the video how to use ReplicaSet in ServiceMesh and kubernetes clust
 - Download and install istio and make label on the default namespace with istio-injection=enabled.
   > https://github.com/developer-onizuka/istio
 
-- Create the Ops Manager. 
+- Create and configure the Ops Manager. 
   > https://github.com/developer-onizuka/mongoDB_opsManager
 
 - Create Three Virtual Machines for mongoDB's replicaSet which will be used later. 
