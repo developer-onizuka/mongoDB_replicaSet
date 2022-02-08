@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: employee
-        image: developeronizuka/employee:1.0.1
+        image: developeronizuka/employee:latest
         ports:
         - containerPort: 5001
         - containerPort: 5000
